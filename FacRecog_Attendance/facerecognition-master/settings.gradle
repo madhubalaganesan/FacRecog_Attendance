@@ -1,0 +1,6 @@
+include 'common', 'app', 'service'
+rootProject.name = 'facerecognition'
+
+/*rootProject.children.each { project ->
+    project.projectDir = new File(settingsDir.parentFile, project.name)
+}*/

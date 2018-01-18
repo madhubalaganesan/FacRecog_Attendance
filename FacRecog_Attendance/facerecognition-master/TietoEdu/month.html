@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <meta charset="utf-8">
+        
+        <title>Tieto</title>
+
+        <!-- Bootstrap Core CSS -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- MetisMenu CSS -->
+        <link href="css/metisMenu.min.css" rel="stylesheet">
+
+        <!-- Timeline CSS -->
+        <link href="css/timeline.css" rel="stylesheet">
+
+        <!-- Custom CSS -->
+        <link href="css/startmin.css" rel="stylesheet">
+
+        <!-- Morris Charts CSS -->
+        <link href="css/morris.css" rel="stylesheet">
+
+        <!-- Custom Fonts -->
+        <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <style>
+            .graph-container {
+    padding: 30px;
+    border: 1px solid #ccc;
+    box-shadow: 1px 1px 2px #eee;
+    margin: 10px 0;
+    position: relative;
+}
+        </style>
+    </head>
+    <body>
+
+        <div id="wrapper">
+
+            <!-- Navigation -->
+            <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="index.html">Tieto Education - Attendance System</a>
+                </div>
+                <!-- /.navbar-top-links -->
+
+                <div class="navbar-default sidebar" role="navigation">
+                    <div class="sidebar-nav navbar-collapse">
+                        <ul class="nav" id="side-menu">
+                            <li>
+                                <a href="index.html"><i class="fa fa-dashboard fa-fw"></i>   Attendance </a>
+                            </li>
+                            <li>
+                                <a href="today.html"><i class="fa fa-desktop fa-fw"></i>  Today's Statistics</a>
+                            </li>
+                            <li>
+                                <a href="month.html"  class="active"><i class="fa fa-database fa-fw"></i>  Monthly Statistics</a>
+                            </li>
+                            <li>
+                                    <a href="consolidated.html"><i class="fa fa-university fa-fw"></i>   Annual Attendance Statistics</a>
+                                </li>
+                            
+                         </ul>
+                    </div>
+                </div>
+            </nav>
+
+            <div id="page-wrapper">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header" style="color: #2874A6; font-family: Arial, Helvetica, sans-serif">Monthly Statistics</h1>
+                        <div class="graph-container">
+                        <div id="bar-chart" style="max-height: 500px"></div>
+                        </div>
+                    </div>
+                    <!-- /.col-lg-12 -->
+                </div>
+                    
+
+        <!-- jQuery -->
+        <script src="js/jquery.min.js"></script>
+        <script src="js/jquery.dataTables.min.js"></script>
+        <script src="js/morris.min.js"></script>
+        <script src="js/raphael.min.js"></script>
+
+        <!-- Bootstrap Core JavaScript -->
+        <script src="js/bootstrap.min.js"></script>
+
+        <!-- Metis Menu Plugin JavaScript -->
+        <script src="js/metisMenu.min.js"></script>
+
+        <!-- Custom Theme JavaScript -->
+        <script src="js/startmin.js"></script>
+        
+            
+        <script>
+                $(document).ready(function() {
+                    var data = [
+                    { Date: '1 Oct 2017', Students: 0},
+                    { Date: '2 Oct 2017', Students: 50},
+                    { Date: '3 Oct 2017', Students: 47},
+                    { Date: '4 Oct 2017', Students: 49},
+                    { Date: '5 Oct 2017', Students: 40},
+                    { Date: '6 Oct 2017', Students: 37},
+                    { Date: '7 Oct 2017', Students: 0},
+                    { Date: '8 Oct 2017', Students: 48},
+                    { Date: '9 Oct 2017', Students: 50},
+                    { Date: '10 Oct 2017', Students: 45},
+                    { Date: '11 Oct 2017', Students: 43},
+                    { Date: '12 Oct 2017', Students: 31},
+                    { Date: '13 Oct 2017', Students: 29},
+                    { Date: '14 Oct 2017', Students: 0},
+                    { Date: '15 Oct 2017', Students: 0},
+                    { Date: '16 Oct 2017', Students: 50},
+                    { Date: '17 Oct 2017', Students: 46},
+                    { Date: '18 Oct 2017', Students: 49},
+                    { Date: '19 Oct 2017', Students: 50},
+                    { Date: '20 Oct 2017', Students: 38},
+                    { Date: '21 Oct 2017', Students: 0},
+                    { Date: '22 Oct 2017', Students: 0},
+                    { Date: '23 Oct 2017', Students: 50},
+                    { Date: '24 Oct 2017', Students: 50},
+                    { Date: '25 Oct 2017', Students: 49},
+                    { Date: '26 Oct 2017', Students: 49},
+                    { Date: '27 Oct 2017', Students: 50},
+                    { Date: '28 Oct 2017', Students: 0},
+                    { Date: '29 Oct 2017', Students: 0},
+                    { Date: '30 Oct 2017', Students: 47},
+                    { Date: '31 Oct 2017', Students: 49},
+                    ],
+                  config = {
+                    data: data,
+                    xkey: 'Date',
+                    ykeys: ['Students'],
+                    labels: ['No of Students'],
+                    fillOpacity: 0.6,
+                    hideHover: 'auto',
+                    behaveLikeLine: true,
+                    resize: true,
+                    pointFillColors:['#ffffff'],
+                   
+                };
+              config.element = 'bar-chart';
+              Morris.Bar(config);
+            
+        } );
+               </script>
+    </body>
+</html>

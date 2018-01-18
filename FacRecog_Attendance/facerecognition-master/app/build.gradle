@@ -1,0 +1,42 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.2.5.RELEASE")
+    }
+}
+apply plugin: 'spring-boot'
+
+
+sourceSets {
+    main {
+        resources {
+            srcDir '../common/src/main/resources'
+        }
+    }
+}
+
+jar {
+    manifest {
+        baseName = 'facerecog-app'
+        //attributes 'Main-Class': "$mainClassName"
+    }
+}
+
+
+configurations {
+    compile.exclude module: "commons-logging"
+    //compile.exclude module: "minlog"
+}
+
+dependencies {
+    compile("com.fasterxml.jackson.core:jackson-databind:2.4.6")
+    compile("org.springframework:spring-web:4.1.6.RELEASE")
+
+    compile group: 'com.google.guava', name: 'guava', version: '12.0'
+    compile 'ch.qos.logback:logback-classic:1.0.9', // we use logback
+            'org.slf4j:jcl-over-slf4j:1.7.2',       // and the commons-logging bridge
+            'org.slf4j:log4j-over-slf4j:1.7.2'      // and the log4j bridge
+    compile project(':common')
+}

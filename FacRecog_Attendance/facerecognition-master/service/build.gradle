@@ -1,0 +1,57 @@
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.2.5.RELEASE")
+    }
+}
+apply plugin: 'spring-boot'
+
+
+sourceSets {
+    main {
+        resources {
+            srcDir '../common/src/main/resources'
+        }
+    }
+}
+
+run {
+    if(project.hasProperty('args')){
+        args project.args.split('\\s+')
+        //gradlew run -Pargs=".."
+    }
+}
+
+jar {
+    manifest {
+        baseName = 'facerecog-service'
+        //attributes 'Main-Class': "$mainClassName"
+    }
+}
+
+configurations {
+    compile.exclude module: "spring-boot-starter-tomcat"
+    compile.exclude module: "commons-logging"
+    //compile.exclude module: "minlog"
+}
+
+/*
+processResources {
+    from(zipTree('../common/build/libs/common.jar'))
+}
+*/
+dependencies {
+    compile("org.springframework.boot:spring-boot-starter-web:1.2.5.RELEASE")
+    compile("org.springframework.boot:spring-boot-starter-jetty:1.2.5.RELEASE")
+    compile("org.springframework.boot:spring-boot-starter-actuator:1.2.5.RELEASE")
+
+//  compile("org.springframework.boot:spring-boot-starter-data-mongodb")
+
+    compile project(':common')
+}
+
+
+

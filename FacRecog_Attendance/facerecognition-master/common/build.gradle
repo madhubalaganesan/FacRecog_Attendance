@@ -1,0 +1,9 @@
+
+
+dependencies {
+    compile group: 'org.bytedeco', name: 'javacv', version: '0.11' //OpenCV
+    //compile group: 'org.bytedeco.javacpp-presets', name: 'opencv', version: '2.4.11-0.11', classifier: 'javadoc'
+    compile group: 'org.bytedeco.javacpp-presets', name: 'opencv', version: '2.4.11-0.11', classifier: platform
+    compile group: 'com.esotericsoftware.minlog', name: 'minlog', version: '1.2'    //Minimalistic logger utility
+
+}

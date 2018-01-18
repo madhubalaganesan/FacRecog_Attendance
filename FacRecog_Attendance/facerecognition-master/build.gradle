@@ -1,0 +1,50 @@
+String findPlatform() {
+    String platform = System.properties['os.name'].toLowerCase()
+    if(platform.contains("windows")) {
+        platform = platform.replaceAll(" \\d+.*", "-x86_64")
+    } else {
+        platform = platform.replaceAll(" ", "") + "-" + System.getProperty('os.arch')
+        if(platform.contains("linux")) {
+            platform = platform.replaceAll("amd", "x86_")
+        }
+    }
+    return platform;
+}
+apply plugin: 'idea'
+
+
+subprojects {
+
+    apply plugin: 'java'
+
+    sourceSets {
+        main {
+            java {
+                srcDir 'src/main/java'
+            }
+            resources {
+                srcDir 'src/main/resources'
+            }
+        }
+    }
+
+    repositories {
+        mavenCentral()
+    }
+    ext.platform = findPlatform();
+
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+
+    idea {
+        module {
+            downloadJavadoc = false
+            downloadSources = false
+            inheritOutputDirs = false
+        }
+    }
+
+    task wrapper(type: Wrapper) {
+        gradleVersion = '2.3'
+    }
+}
